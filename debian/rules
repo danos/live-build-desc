@@ -1,0 +1,29 @@
+#!/usr/bin/make -f
+
+CODENAME=$(shell lsb_release --short --codename)
+
+# lsb will return n/a on unreleased versions of Debian, so get the name
+# from debian_version which will be $CODENAME/sid until release. After release
+# debian_version contains the release number.
+ifeq (n/a,$(CODENAME))
+    CODENAME=$(shell sed "s/\(.*\)\/.*/\1/" /etc/debian_version)
+endif
+
+%:
+	dh $@
+
+binary: debian/$(CODENAME).deps
+	test -f debian/control.orig || cp -v debian/control debian/control.orig
+	cat debian/control.orig debian/control.dist | \
+		sed -e "s/@@CODENAME@@/$(CODENAME)/" > debian/control
+	dh $@
+
+override_dh_gencontrol:
+	dh_gencontrol -- -V"dist:Depends=$(shell debian/dist_Depends_substvars $(CODENAME))"
+
+generate_%:
+	echo "# Additional dependencies from live-build" > debian/$(subst generate_,,$@).deps
+	echo "dctrl-tools" >> debian/$(subst generate_,,$@).deps
+	echo "" >> debian/$(subst generate_,,$@).deps
+	echo "# This is generated list from debootstrap --print-debs $(subst generate_,,$@) amd64" >> debian/$(subst generate_,,$@).deps
+	sudo debootstrap --print-debs $(subst generate_,,$@) amd64 | grep -v "I:" | grep -v "gpgv:" | tr ' ' '\n' | sort | uniq >> debian/$(subst generate_,,$@).deps

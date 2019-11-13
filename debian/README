@@ -1,0 +1,5 @@
+The Debian Package live-build-desc
+----------------------------
+
+Manually generated debootstrap depedency list by running:
+ debootstrap --print-debs <suite> <target>

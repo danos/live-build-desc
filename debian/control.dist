@@ -1,0 +1,8 @@
+
+Package: live-build-desc-@@CODENAME@@
+Architecture: all
+Provides: live-build-desc
+Depends: ${misc:Depends},${dist:Depends},live-build-desc-hooks
+Description: OBS specific live-build package for Debian @@CODENAME@@
+ Meta package to hold all debootstrap --print-debs @@CODENAME@@ dependencies.
+ Which got later sligtly modified to fit live-build needs.

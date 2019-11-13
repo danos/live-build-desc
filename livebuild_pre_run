@@ -1,0 +1,26 @@
+#!/bin/bash -x
+
+fix_debootstrap()
+{
+    # debootstrap does not like dash
+
+    if [ -x /usr/sbin/debootstrap ] ; then
+        sed -i 's|^#!/bin/sh|#!/bin/bash|' /usr/sbin/debootstrap
+    fi
+}
+
+fix_lb_bootstrap_archive-keys()
+{
+    if [ -e /usr/lib/live/build/bootstrap_archive-keys ] ; then
+        sed -i '/apt-get update/{ s/^/#/ }' \
+            /usr/lib/live/build/bootstrap_archive-keys
+    fi
+}
+
+#
+# main
+#
+
+# Distribution and live-build specific hooks
+fix_debootstrap
+fix_lb_bootstrap_archive-keys

@@ -1,0 +1,8 @@
+live-build-desc for Debian
+--------------------------
+
+The main content this project/package is the dependency list which got
+manually extracted from debootstrap --print-deps $suite $arch.
+
+
+

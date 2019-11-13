@@ -1,0 +1,12 @@
+Source: live-build-desc
+Section: misc
+Priority: optional
+Maintainer: Vyatta Package Maintainers <DL-vyatta-help@att.com>
+Build-Depends: debhelper (>= 9), lsb-release, apt
+Standards-Version: 3.9.6
+
+Package: live-build-desc-hooks
+Architecture: all
+Depends: ${misc:Depends}
+Description: OBS specific live-build hooks
+ Distribution generic live-build hooks

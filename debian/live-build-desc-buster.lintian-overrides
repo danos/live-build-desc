@@ -1,0 +1,4 @@
+live-build-desc-buster: depends-on-essential-package-without-using-version depends: *
+live-build-desc-buster: empty-binary-package
+live-build-desc-buster: possible-gpl-code-linked-with-openssl
+live-build-desc-buster: depends-on-python-minimal

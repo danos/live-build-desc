@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# Print content for dist:Depends substvar
+#
+
+set -e
+
+CODENAME=${1?Missing CODENAME argument}
+TOPDIR=$(cd $(dirname $0) ; pwd -P)
+DEPS=$(grep -v '^#' ${TOPDIR}/${CODENAME}.deps | paste -s -d, | tr -s ',')
+echo -n ${DEPS}

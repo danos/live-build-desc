@@ -1,0 +1,4 @@
+live-build-desc-stretch: depends-on-essential-package-without-using-version depends: *
+live-build-desc-stretch: empty-binary-package
+live-build-desc-stretch: possible-gpl-code-linked-with-openssl
+

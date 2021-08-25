@@ -155,7 +155,8 @@ sed
 sensible-utils
 systemd
 systemd-sysv
-systemd-timesyncd
+time-daemon
+ntp
 sysvinit-utils
 tar
 tasksel

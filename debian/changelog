@@ -1,3 +1,10 @@
+live-build-desc (0.8) unstable; urgency=medium
+
+  [ Nicholas Brown ]
+  * Generate files for Debian Bullseye
+
+ -- Colin Docherty <colin.docherty@intl.att.com>  Wed, 01 Sep 2021 01:11:42 -0700
+
 live-build-desc (0.7) unstable; urgency=medium
 
   * Import DANOS Master
